@@ -152,12 +152,12 @@ exports.postSignup = (req, res, next) => {
     })
     .then((result) => {
       res.redirect('/login');
-      // return transporter.sendMail({
-      //   to: email,
-      //   from: 'shop@node-complete.com',
-      //   subject: 'Signup succeeded!',
-      //   html: '<h1>You successfully signed up!</h1>'
-      // });
+      return transporter.sendMail({
+        to: email,
+        from: 'shop@planksolutions.co.za',
+        subject: 'Signup succeeded!',
+        html: '<h1>You successfully signed up!</h1>',
+      });
     })
     .catch((err) => {
       const error = new Error(err);
@@ -208,7 +208,7 @@ exports.postReset = (req, res, next) => {
         res.redirect('/');
         transporter.sendMail({
           to: req.body.email,
-          from: 'shop@node-complete.com',
+          from: 'shop@planksolutions.co.za',
           subject: 'Password reset',
           html: `
             <p>You requested a password reset</p>
